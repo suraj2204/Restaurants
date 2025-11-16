@@ -1,10 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿
+using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Application.Restaurants;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Restaurants.Application.Extensions
 {
@@ -12,8 +9,11 @@ namespace Restaurants.Application.Extensions
     {
         public static void AddApplication(this IServiceCollection services)
         {
+            var assembly = typeof(ServiceCollectionExtensions).Assembly;
+            //var assembly1 = typeof(ServiceCollectionExtensions1).Assembly;
             services.AddScoped<IRestaurantsService, RestaurantsService>();
-            services.AddAutoMapper(typeof(ServiceCollectionExtensions).Assembly);
+            services.AddAutoMapper(assembly);
+            
         }
     }
 }
